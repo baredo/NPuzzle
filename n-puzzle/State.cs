@@ -95,10 +95,10 @@ namespace n_puzzle {
             Point zeroValue = getPosition(0);
             int fix = 1;
             if(zeroValue.x == 0) allowedActionList.RemoveAt(0);
-            else if(zeroValue.x == state[0].Length) allowedActionList.RemoveAt(1);
+            else if(zeroValue.x == state[0].Length-1) allowedActionList.RemoveAt(1);
             else fix = 0;
             if(zeroValue.y == 0) allowedActionList.RemoveAt(2-fix);
-            else if(zeroValue.y == state.Length) allowedActionList.RemoveAt(3-fix);
+            else if(zeroValue.y == state.Length-1) allowedActionList.RemoveAt(3-fix);
 
             return allowedActionList;
         }

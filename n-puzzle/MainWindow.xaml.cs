@@ -37,7 +37,6 @@ namespace n_puzzle {
             Func<State, List<Action>> convertMethod = actionAllowed;
 
             State newState = initState.doAction(actionList.ElementAt(0));
-            int b = 3;
 
         }
 
