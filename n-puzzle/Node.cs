@@ -9,7 +9,7 @@ namespace n_puzzle {
         State state;
         Node parent;
         Action action;
-        int cost;
+        public int cost { get; }
 
         public Node(State state, Node parent, Action action, int cost) {
             this.state = state;
