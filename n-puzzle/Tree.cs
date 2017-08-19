@@ -60,11 +60,11 @@ namespace n_puzzle {
         }
     }
 
-    class HashTree : Tree {
-        HashSet<Node> frontier;
-        public HashTree(State state) : base(state) {
+    class SortedTree : Tree {
+        SortedSet<Node> frontier;
+        public SortedTree(State state) : base(state) {
             Node node = new Node(state, null, null, 0);
-            frontier.Push(node);
+            push(node);
         }
 
         public override bool isEmpty() {
@@ -73,7 +73,7 @@ namespace n_puzzle {
         }
 
         public override Node pop(string id) {
-            return frontier.Min<Node>(getCost);
+            return frontier.First<Node>();
         }
 
         public override void push(Node node, string key = "") {
@@ -82,7 +82,7 @@ namespace n_puzzle {
 
         public Node getCost(int cost) {
             Node node = new Node(null, null, null, 1);
-            return node.cost;
+            return node;
         }
     }
 }
