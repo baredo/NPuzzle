@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace n_puzzle {
-    class Action {
+    public class Action {
         //string name;
         //short id;
         int cost;

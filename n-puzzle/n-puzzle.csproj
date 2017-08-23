@@ -35,7 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -59,6 +59,7 @@
     <Compile Include="Action.cs" />
     <Compile Include="BreadthFirstSearch.cs" />
     <Compile Include="Node.cs" />
+    <Compile Include="nPuzzle.cs" />
     <Compile Include="State.cs" />
     <Compile Include="Tree.cs" />
     <Page Include="MainWindow.xaml">

@@ -5,14 +5,32 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace n_puzzle {
-    class BreadthFirstSearch {
-        Tree tree;
-
-        Func<string, string> actionList;
-        public BreadthFirstSearch(Tree tree, Func<string, string> actionList) {
-            this.tree = tree;
+    public class BreadthFirstSearch {
+        QueueTree tree;
+        List<Action> actionList;
+        Func<State, List<Action>, List<Action>> actionAllowed;
+        Func<State, Action, List<Action>, State> doAction;
+        public BreadthFirstSearch(  State firstState, 
+                                    List<Action> actionList, 
+                                    Func<State, List<Action>, List<Action>> actionAllowed,
+                                    Func<State, Action, List<Action>, State> doAction) {
+            this.tree = new QueueTree(firstState);
             this.actionList = actionList;
-            actionList("a");
+            this.actionAllowed = actionAllowed;
+            this.doAction = doAction;
+        }
+
+        public void exec(int depth) {
+            while(tree.getNext().depth < depth) {
+                List<Action> listActionAllowed = actionAllowed(tree.getNext().state, actionList);
+                List<Node> listNode = new List<Node>();
+                foreach(var item in listActionAllowed) {
+                    State newState = new State(tree.getNext().state);
+                    newState = doAction(newState, item, actionList);
+                    listNode.Add(new Node(newState, tree.getNext(), item, 1));
+                }
+                tree.expandFrontier(listNode);
+            }
         }
 
         public void action() {

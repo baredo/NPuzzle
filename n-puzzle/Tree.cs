@@ -5,24 +5,27 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace n_puzzle {
-    abstract class Tree {
+    public abstract class Tree {
         public Tree(State state) {
-            
         }
-        public void expandFrontier(Action action) {
-            //queue.Enqueue();
-        }
+        public abstract void expandFrontier(List<Node> childNode);
         public abstract bool isEmpty();
-        public abstract Node pop(string key = "");
-        public abstract void push(Node node, string key = "");
+        protected abstract Node pop(string key = "");
+        protected abstract void push(Node node, string key = "");
 
     }
 
-    class QueueTree : Tree {
+    public class QueueTree : Tree {
         Queue<Node> frontier;
         public QueueTree(State state) : base (state){
             Node node = new Node(state, null, null, 0);
+            frontier = new Queue<Node>();
             frontier.Enqueue(node);
+        }
+
+        public override void expandFrontier(List<Node> childNode) {
+            pop();
+            for(int i = 0; i < childNode.Count; i++) push(childNode.ElementAt(i));
         }
 
         public override bool isEmpty() {
@@ -30,20 +33,29 @@ namespace n_puzzle {
             return false;
         }
 
-        public override Node pop(string id) {
+        public Node getNext() {
+            return frontier.First();
+        }
+
+        protected override Node pop(string key = "") {
             return frontier.Dequeue();
         }
 
-        public override void push(Node node, string key = "") {
+        protected override void push(Node node, string key = "") {
             frontier.Enqueue(node);
         }
     }
 
-    class StackTree : Tree {
+    public class StackTree : Tree {
         Stack<Node> frontier;
         public StackTree(State state) : base(state) {
             Node node = new Node(state, null, null, 0);
+            frontier = new Stack<Node>();
             frontier.Push(node);
+        }
+
+        public override void expandFrontier(List<Node> childNode) {
+
         }
 
         public override bool isEmpty() {
@@ -51,20 +63,21 @@ namespace n_puzzle {
             return false;
         }
 
-        public override Node pop(string id) {
+        protected override Node pop(string id) {
             return frontier.Pop();
         }
 
-        public override void push(Node node, string key = "") {
+        protected override void push(Node node, string key = "") {
             frontier.Push(node);
         }
     }
 
-    class HashTree : Tree {
-        HashSet<Node> frontier;
-        public HashTree(State state) : base(state) {
+    public class SortedTree : Tree {
+        SortedSet<Node> frontier;
+        public SortedTree(State state) : base(state) {
             Node node = new Node(state, null, null, 0);
-            frontier.Push(node);
+            frontier = new SortedSet<Node>();
+            frontier.Add(node);
         }
 
         public override bool isEmpty() {
@@ -72,17 +85,20 @@ namespace n_puzzle {
             return false;
         }
 
-        public override Node pop(string id) {
-            return frontier.Min<Node>(getCost);
+        protected override Node pop(string id) {
+            return frontier.Min;
         }
 
-        public override void push(Node node, string key = "") {
+        protected override void push(Node node, string key = "") {
             frontier.Add(node);
         }
 
-        public Node getCost(int cost) {
+        public int getCost(int cost) {
             Node node = new Node(null, null, null, 1);
-            return node.cost;
+            return frontier.Min.cost;
+        }
+
+        public override void expandFrontier(List<Node> childNode) {
         }
     }
 }

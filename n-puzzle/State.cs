@@ -12,16 +12,23 @@ namespace n_puzzle {
         public Point(int x, int y){ this.x = x; this.y = y;}
     };
 
-    class State {
-        private int[][] state { get; }
+    public class State {
+        public int[][] state { get; }
+        public int height { get; }
+        public int width { get; }
         private List<Action> allowedActionList;
         private List<Action> actionList;
 
+        public int getValue(int y, int x) {
+            return state[y][x];
+        }
         public State(int width, int height, List<Action> actionList) {           
             state = new int[height][];
             for(int i = 0; i < height; i++) {
                 state[i] = new int[width];
             }
+            this.width = width;
+            this.height = height;
             this.actionList = actionList;
             setRandom();
             allowedAction();

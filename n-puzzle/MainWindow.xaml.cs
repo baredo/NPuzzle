@@ -24,25 +24,10 @@ namespace n_puzzle {
         public MainWindow() {
             InitializeComponent();
 
-            List<Action> actionList = new List<Action>();
-            actionList.Add(new Action("goUp", (short)Direction.up));
-            actionList.Add(new Action("goDown", (short)Direction.down));
-            actionList.Add(new Action("goLeft", (short)Direction.left));
-            actionList.Add(new Action("goRight", (short)Direction.right));
-
-            State initState = new State(3, 3, actionList);
-            State goalState = new State(3, 3, actionList);
-            goalState.setGoal();
-
-            Func<State, List<Action>> convertMethod = actionAllowed;
-
-            State newState = initState.doAction(actionList.ElementAt(0));
+            
 
         }
 
-        private static List<Action> actionAllowed(State state) {
-            return null;
-        }
-
+        
     }
 }

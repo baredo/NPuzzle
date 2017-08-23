@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace n_puzzle {
-    class Node {
-        State state;
+    public class Node {
+        public State state { get; }
         Node parent;
         Action action;
+        public int depth { get; }
         public int cost { get; }
 
         public Node(State state, Node parent, Action action, int cost) {
@@ -16,6 +17,8 @@ namespace n_puzzle {
             this.parent = parent;
             this.action = action;
             this.cost = cost;
+            if(parent == null) this.depth = 1;
+            else this.depth = parent.depth + 1;
         }
     }
 }
