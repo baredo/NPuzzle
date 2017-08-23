@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 namespace n_puzzle {
     public abstract class Tree {
         public Tree(State state) {
+            if(state == null)
+                throw new ArgumentNullException("Argument state not initialized.");
         }
         public abstract void expandFrontier(List<Node> childNode);
         public abstract bool isEmpty();
