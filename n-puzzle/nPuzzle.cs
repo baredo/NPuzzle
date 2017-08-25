@@ -15,8 +15,8 @@ namespace n_puzzle {
             actionList.Add(new Action("goLeft", (short)Direction.left));
             actionList.Add(new Action("goRight", (short)Direction.right));
 
-            initState = new State(3, 3, actionList);
-            goalState = new State(3, 3, actionList);
+            initState = new State(3, 3);
+            goalState = new State(3, 3);
             goalState.setGoal();
 
             Func<State, List<Action>, List<Action>> convertMethod = actionAllowed;
