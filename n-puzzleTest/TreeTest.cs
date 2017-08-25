@@ -6,27 +6,6 @@ namespace n_puzzleTest {
     [TestClass]
     public abstract class TreeTest {
         protected Tree tree;
-        /*[ClassInitialize()]
-        public void TreeTestInit() {
-            List<n_puzzle.Action> actionList;
-            try {
-                tree = new QueueTree(null);
-            } catch {
-                actionList = new List<n_puzzle.Action>();
-                actionList.Add(new n_puzzle.Action("goUp", 0));
-                actionList.Add(new n_puzzle.Action("goDown", 1));
-                actionList.Add(new n_puzzle.Action("goLeft", 2));
-                actionList.Add(new n_puzzle.Action("goRight", 3));
-                tree = new QueueTree(new State(1, 1, actionList));
-            }
-            
-            actionList = new List<n_puzzle.Action>();
-            actionList.Add(new n_puzzle.Action("goUp", 0));
-            actionList.Add(new n_puzzle.Action("goDown", 1));
-            actionList.Add(new n_puzzle.Action("goLeft", 2));
-            actionList.Add(new n_puzzle.Action("goRight", 3));
-            tree = new QueueTree(new State(1, 1, actionList));
-        }*/
 
         [TestInitialize()]
         public void Initialize() {
@@ -37,8 +16,6 @@ namespace n_puzzleTest {
             }
         }
 
-        [TestMethod]
-        public abstract void isEmptyTest();
     }
 
     [TestClass]
@@ -47,8 +24,19 @@ namespace n_puzzleTest {
         
 
         [TestMethod]
-        public override void isEmptyTest() {
-            tree.isEmpty();
+        public void EmptyFrontier() {
+            Assert.IsFalse(tree.isEmpty());
+        }
+
+        [TestMethod]
+        public void NotEmptyFrontier() {
+            //Arrange
+            List<Node> emptyListChildNode = new List<Node>();
+            tree.expandFrontier(emptyListChildNode);
+            //Act
+            bool isEmpty = tree.isEmpty();
+            //Assert
+            Assert.IsTrue(isEmpty);
         }
     }
 }
