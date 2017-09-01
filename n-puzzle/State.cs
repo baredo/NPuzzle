@@ -37,13 +37,13 @@ namespace n_puzzle {
         public void setGoal() {
             for(int i = 0; i < state.Length; i++) {
                 for(int j = 0; j < state[i].Length; j++) {
-                    state[i][j] = i * 3 + j;
+                    state[i][j] = i * width + j;
                 }
             }
         }
 
         public void setRandom() {
-            List<int> numChoose = new List<int>(9);
+            List<int> numChoose = new List<int>(width*height);
             for(int i = 0; i < state.Length * state[0].Length; i++) {
                 numChoose.Add(i);
             }

@@ -7,6 +7,7 @@ namespace n_puzzle {
         List<Action> actionList;
         State initState;
         State goalState;
+        BreadthFirstSearch searcher;
 
         public nPuzzle() {
             actionList = new List<Action>();
@@ -21,8 +22,11 @@ namespace n_puzzle {
 
             Func<State, List<Action>, List<Action>> convertMethod = actionAllowed;
             Func<State, Action, List<Action>, State> convertMethod2 = doAction;
-            BreadthFirstSearch searcher = new BreadthFirstSearch(initState, actionList, convertMethod,
+            searcher = new BreadthFirstSearch(initState, actionList, convertMethod,
                                                                 convertMethod2);
+        }
+
+        public void nextStep() {
             searcher.exec(2);
         }
 
@@ -45,7 +49,7 @@ namespace n_puzzle {
         private Point getPosition(State state, int value) {
             for(int i = 0; i < state.height; i++) {
                 for(int j = 0; j < state.width; j++) {
-                    if(state.getValue(i, j) == value) return new Point(i, j);
+                    if(state.getValue(i, j) == value) return new Point(j, i);
 
                 }
             }

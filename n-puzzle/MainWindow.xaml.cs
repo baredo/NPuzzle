@@ -23,7 +23,8 @@ namespace n_puzzle {
 
         public MainWindow() {
             InitializeComponent();
-
+            nPuzzle game = new nPuzzle();
+            game.nextStep();
             
 
         }
