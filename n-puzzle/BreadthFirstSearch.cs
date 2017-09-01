@@ -20,17 +20,18 @@ namespace n_puzzle {
             this.doAction = doAction;
         }
 
-        public void exec(int depth) {
+        public Node exec(int depth) {
             while(tree.getNext().depth < depth) {
                 List<Action> listActionAllowed = actionAllowed(tree.getNext().state, actionList);
                 List<Node> listNode = new List<Node>();
                 foreach(var item in listActionAllowed) {
                     State newState = new State(tree.getNext().state);
                     newState = doAction(newState, item, actionList);
-                    listNode.Add(new Node(newState, tree.getNext(), item, 1));
+                    listNode.Add(new Node(newState, tree.getNext(), item, tree.getNext().cost+1));
                 }
                 tree.expandFrontier(listNode);
             }
+            return tree.getNext().parent;
         }
 
         public void action() {

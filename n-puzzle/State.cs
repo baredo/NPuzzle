@@ -31,9 +31,15 @@ namespace n_puzzle {
         }
 
         public State(State state) {
-            this.state = state.state;
             this.width = state.width;
             this.height = state.height;
+            this.state = new int[height][];
+            for(int i = 0; i < height; i++) {
+                this.state[i] = new int[width];
+                for(int j = 0; j < width; j++) {
+                    this.state[i][j] = state.state[i][j];
+                }
+            }
         }
 
         public void setGoal() {

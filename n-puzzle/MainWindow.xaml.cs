@@ -24,8 +24,37 @@ namespace n_puzzle {
         public MainWindow() {
             InitializeComponent();
             nPuzzle game = new nPuzzle();
-            game.nextStep();
+            Node estado = game.nextStep();
+
+            int width = 3;
+            int height = 3;
+
+            grid.Background = new SolidColorBrush(Colors.LightSteelBlue);
+            for(int i = 0; i < width; i++) {
+                grid.ColumnDefinitions.Add(new ColumnDefinition());
+            }
+            for(int i = 0; i < height; i++) {
+                grid.RowDefinitions.Add(new RowDefinition());
+            }
             
+            List<Label> listLabel = new List<Label>();
+            for(int i =0; i<height; i++) {
+                for(int j=0; j<width; j++) {
+
+                    Label label = new Label();
+                    label.Content = estado.state.state[i][j];
+                    label.Width = 100;
+                    label.Height = 100;
+                    label.Foreground = new SolidColorBrush(Colors.Black);
+                
+                    Grid.SetRow(label, i);
+                    Grid.SetColumn(label, j);
+                
+                    grid.Children.Add(label);
+                    listLabel.Add(label);
+                }
+            }
+
 
         }
 

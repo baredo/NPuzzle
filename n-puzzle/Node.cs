@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace n_puzzle {
     public class Node {
         public State state { get; }
-        Node parent;
+        public Node parent { get; }
         Action action;
         public int depth { get; }
         public int cost { get; }
@@ -17,7 +17,7 @@ namespace n_puzzle {
             this.parent = parent;
             this.action = action;
             this.cost = cost;
-            if(parent == null) this.depth = 1;
+            if(parent == null) this.depth = 0;
             else this.depth = parent.depth + 1;
         }
     }

@@ -6,42 +6,8 @@
         xmlns:local="clr-namespace:n_puzzle"
         mc:Ignorable="d"
         Title="N-Puzzle" Height="350" Width="525">
-    <Grid Margin="20.5,10,196.5,9" Width="300" Height="300">
-        <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-                <GradientStop Color="#FFB9B8B8" Offset="1"/>
-                <GradientStop Color="#FFECECEC"/>
-                <GradientStop Color="#FFDEDEDE" Offset="0.967"/>
-            </LinearGradientBrush>
-        </Grid.Background>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <Border BorderBrush="#FF179AC8" BorderThickness="2" />
-        <Label x:Name="slide1" Content="0" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" Background="{x:Null}" FontSize="18"/>
-        <Border BorderBrush="#FF179AC8" BorderThickness="2" Grid.Column="1" />
-        <Label x:Name="slide2" Content="0" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" Grid.Column="1" FontSize="18"/>
-        <Border BorderBrush="#FF179AC8" BorderThickness="2" Grid.Column="2" />
-        <Label x:Name="slide3" Content="0" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" Grid.Column="2" FontSize="18"/>
-        <Border BorderBrush="#FF179AC8" BorderThickness="2" Grid.Row="1" />
-        <Label x:Name="slide4" Content="0" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" Grid.Row="1" FontSize="18"/>
-        <Border BorderBrush="#FF179AC8" BorderThickness="2" Grid.Row="1" Grid.Column="1" />
-        <Label x:Name="slide5" Content="0" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1" FontSize="18"/>
-        <Border BorderBrush="#FF179AC8" BorderThickness="2" Grid.Row="1" Grid.Column="2" />
-        <Label x:Name="slide6" Content="0" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" Grid.Row="1" Grid.Column="2" FontSize="18"/>
-        <Border BorderBrush="#FF179AC8" BorderThickness="2" Grid.Row="2" />
-        <Label x:Name="slide7" Content="0" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" Grid.Row="2" FontSize="18"/>
-        <Border BorderBrush="#FF179AC8" BorderThickness="2" Grid.Row="2" Grid.Column="1" />
-        <Label x:Name="slide8" Content="0" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" Grid.Row="2" Grid.Column="1" FontSize="18"/>
-        <Border BorderBrush="#FF179AC8" BorderThickness="2" Grid.Row="2" Grid.Column="2" />
-        <Label x:Name="slide9" Content="0" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" Grid.Row="2" Grid.Column="2" FontSize="18"/>
+    <Grid x:Name="grid" Margin="20.5,10,196.5,9" Width="300" Height="300">
+
     </Grid>
 
 

@@ -26,8 +26,8 @@ namespace n_puzzle {
                                                                 convertMethod2);
         }
 
-        public void nextStep() {
-            searcher.exec(2);
+        public Node nextStep() {
+            return searcher.exec(4);
         }
 
         private List<Action> actionAllowed(State state, List<Action> actionList) {
@@ -82,7 +82,7 @@ namespace n_puzzle {
                     }
                 }
             }
-            return new State(state);
+            return new State(newState);
         }
     }
 }
