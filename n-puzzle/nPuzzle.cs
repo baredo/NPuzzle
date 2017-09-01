@@ -58,6 +58,7 @@ namespace n_puzzle {
 
         private State doAction(State state, Action action, List<Action> allowedActionList) {
             Point zPoint = getPosition(state, 0);
+            if(zPoint.x < 0) throw new System.InvalidOperationException();
             State newState = new State(state);
             foreach(var allowedAct in allowedActionList) {
                 if(action.id == allowedAct.id) {

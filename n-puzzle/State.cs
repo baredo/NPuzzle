@@ -32,6 +32,8 @@ namespace n_puzzle {
 
         public State(State state) {
             this.state = state.state;
+            this.width = state.width;
+            this.height = state.height;
         }
 
         public void setGoal() {
