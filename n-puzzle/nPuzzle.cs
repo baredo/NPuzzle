@@ -36,12 +36,10 @@ namespace n_puzzle {
                 allowedActionList.Add(item);
             }
             Point zeroValue = getPosition(state, 0);
-            int fix = 1;
-            if(zeroValue.x == 0) allowedActionList.RemoveAt(0);
-            else if(zeroValue.x == state.height - 1) allowedActionList.RemoveAt(1);
-            else fix = 0;
-            if(zeroValue.y == 0) allowedActionList.RemoveAt(2 - fix);
-            else if(zeroValue.y == state.width - 1) allowedActionList.RemoveAt(3 - fix);
+            if(zeroValue.x == 0) allowedActionList.RemoveAt(2);
+            else if(zeroValue.x == state.height - 1) allowedActionList.RemoveAt(3);
+            if(zeroValue.y == 0) allowedActionList.RemoveAt(0);
+            else if(zeroValue.y == state.width - 1) allowedActionList.RemoveAt(1);
 
             return allowedActionList;
         }
@@ -64,20 +62,20 @@ namespace n_puzzle {
                 if(action.id == allowedAct.id) {
                     switch(action.id) {
                         case 0: //MoveUp
-                            newState.state[zPoint.x][zPoint.y] = newState.state[zPoint.x][zPoint.y - 1];
-                            newState.state[zPoint.x][zPoint.y - 1] = 0;
+                            newState.state[zPoint.y][zPoint.x] = newState.state[zPoint.y - 1][zPoint.x];
+                            newState.state[zPoint.y - 1][zPoint.x] = 0;
                             break;
                         case 1: //MoveDown
-                            newState.state[zPoint.x][zPoint.y] = newState.state[zPoint.x][zPoint.y + 1];
-                            newState.state[zPoint.x][zPoint.y + 1] = 0;
+                            newState.state[zPoint.y][zPoint.x] = newState.state[zPoint.y + 1][zPoint.x];
+                            newState.state[zPoint.y + 1][zPoint.x] = 0;
                             break;
                         case 2: //MoveLeft
-                            newState.state[zPoint.x][zPoint.y] = newState.state[zPoint.x - 1][zPoint.y];
-                            newState.state[zPoint.x - 1][zPoint.y] = 0;
+                            newState.state[zPoint.y][zPoint.x] = newState.state[zPoint.y][zPoint.x - 1];
+                            newState.state[zPoint.y][zPoint.x - 1] = 0;
                             break;
                         case 3: //MoveRight
-                            newState.state[zPoint.x][zPoint.y] = newState.state[zPoint.x + 1][zPoint.y];
-                            newState.state[zPoint.x + 1][zPoint.y] = 0;
+                            newState.state[zPoint.y][zPoint.x] = newState.state[zPoint.y][zPoint.x + 1];
+                            newState.state[zPoint.y][zPoint.x + 1] = 0;
                             break;
                         default:
                             return null;
