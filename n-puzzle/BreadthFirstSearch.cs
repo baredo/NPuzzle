@@ -28,10 +28,19 @@ namespace n_puzzle {
                 List<Action> listActionAllowed = actionAllowed(tree.getNext().state, actionList);
                 List<Node> listNode = new List<Node>();
                 foreach(var item in listActionAllowed) {
-                    State newState = new State(tree.getNext().state);
-                    newState = doAction(newState, item, actionList);
-                    if(newState.isEqual(goal)) return new Node(newState, tree.getNext(), item, tree.getNext().cost + 1);
-                    listNode.Add(new Node(newState, tree.getNext(), item, tree.getNext().cost+1));
+                    if(tree.getNext().action != null) {
+                        if(tree.getNext().action.id != item.id) {
+                            State newState = new State(tree.getNext().state);
+                            newState = doAction(newState, item, actionList);
+                            if(newState.isEqual(goal)) return new Node(newState, tree.getNext(), item, tree.getNext().cost + 1);
+                            listNode.Add(new Node(newState, tree.getNext(), item, tree.getNext().cost + 1));
+                        }
+                    }else {
+                        State newState = new State(tree.getNext().state);
+                        newState = doAction(newState, item, actionList);
+                        if(newState.isEqual(goal)) return new Node(newState, tree.getNext(), item, tree.getNext().cost + 1);
+                        listNode.Add(new Node(newState, tree.getNext(), item, tree.getNext().cost + 1));
+                    }
                 }
                 tree.expandFrontier(listNode);
             }

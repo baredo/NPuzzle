@@ -8,7 +8,7 @@ namespace n_puzzle {
     public class Node {
         public State state { get; }
         public Node parent { get; }
-        Action action;
+        public Action action { get; }
         public int depth { get; }
         public int cost { get; }
 

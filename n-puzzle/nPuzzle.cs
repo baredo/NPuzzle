@@ -27,7 +27,7 @@ namespace n_puzzle {
         }
 
         public Node nextStep() {
-            return searcher.exec(14);
+            return searcher.exec(16);
         }
 
         private List<Action> actionAllowed(State state, List<Action> actionList) {
