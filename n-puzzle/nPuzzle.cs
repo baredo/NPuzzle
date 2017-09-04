@@ -22,12 +22,12 @@ namespace n_puzzle {
 
             Func<State, List<Action>, List<Action>> convertMethod = actionAllowed;
             Func<State, Action, List<Action>, State> convertMethod2 = doAction;
-            searcher = new BreadthFirstSearch(initState, actionList, convertMethod,
+            searcher = new BreadthFirstSearch(initState, goalState, actionList, convertMethod,
                                                                 convertMethod2);
         }
 
         public Node nextStep() {
-            return searcher.exec(4);
+            return searcher.exec(14);
         }
 
         private List<Action> actionAllowed(State state, List<Action> actionList) {

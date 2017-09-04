@@ -65,5 +65,15 @@ namespace n_puzzle {
                 }
             }
         }
+
+        public bool isEqual(State state) {
+            if(this.height != state.height || this.width != state.width) return false;
+            for(int i=0; i<height; i++) {
+                for(int j=0; j<width; j++) {
+                    if(this.state[i][j] != state.state[i][j]) return false;
+                }
+            }
+            return true;
+        }
     }
 }
