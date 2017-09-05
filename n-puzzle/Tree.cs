@@ -12,8 +12,8 @@ namespace n_puzzle {
         }
         public abstract void expandFrontier(List<Node> childNode);
         public abstract bool isEmpty();
-        protected abstract Node pop(string key = "");
-        protected abstract void push(Node node, string key = "");
+        public abstract Node pop(string key = "");
+        public abstract void push(Node node, string key = "");
 
     }
 
@@ -26,7 +26,6 @@ namespace n_puzzle {
         }
 
         public override void expandFrontier(List<Node> childNode) {
-            pop();
             for(int i = 0; i < childNode.Count; i++) push(childNode.ElementAt(i));
         }
 
@@ -39,11 +38,11 @@ namespace n_puzzle {
             return frontier.First();
         }
 
-        protected override Node pop(string key = "") {
+        public override Node pop(string key = "") {
             return frontier.Dequeue();
         }
 
-        protected override void push(Node node, string key = "") {
+        public override void push(Node node, string key = "") {
             frontier.Enqueue(node);
         }
     }
@@ -65,11 +64,11 @@ namespace n_puzzle {
             return false;
         }
 
-        protected override Node pop(string id) {
+        public override Node pop(string id) {
             return frontier.Pop();
         }
 
-        protected override void push(Node node, string key = "") {
+        public override void push(Node node, string key = "") {
             frontier.Push(node);
         }
     }
@@ -87,11 +86,11 @@ namespace n_puzzle {
             return false;
         }
 
-        protected override Node pop(string id) {
+        public override Node pop(string id) {
             return frontier.Min;
         }
 
-        protected override void push(Node node, string key = "") {
+        public override void push(Node node, string key = "") {
             frontier.Add(node);
         }
 
